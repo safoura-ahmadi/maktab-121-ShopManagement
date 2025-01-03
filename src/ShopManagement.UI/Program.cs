@@ -9,12 +9,9 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 //builder.Services.AddScoped<ShopDbContext, ShopDbContext>();
-
 string? connectionString = builder.Configuration.GetConnectionString("ShopDb");
 builder.Services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(connectionString));
-
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductAppServices, ProductAppServices>();
 
