@@ -1,9 +1,10 @@
-﻿using ShopManagement.Domain.Entities;
+﻿using ShopManagement.AppServices.Contracts;
+using ShopManagement.Domain.Entities;
 using ShopManagement.Domain.Repositories;
 
 namespace ShopManagement.AppServices
 {
-    public class ProductAppServices
+    public class ProductAppServices : IProductAppServices
     {
         private readonly IProductRepository _productRepository;
 

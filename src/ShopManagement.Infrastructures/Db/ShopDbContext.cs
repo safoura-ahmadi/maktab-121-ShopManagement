@@ -5,18 +5,11 @@ namespace ShopManagement.Infrastructures.Db
 {
     public class ShopDbContext : DbContext
     {
-        public ShopDbContext()
+        public ShopDbContext(DbContextOptions options) : base(options)
         {
-        }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data source=(localdb)\\MSSQLLocalDB; Initial catalog=TehranShop");
-            base.OnConfiguring(optionsBuilder);
         }
-
 
         public DbSet<Product> Products { get; set; }
-
     }
 }
