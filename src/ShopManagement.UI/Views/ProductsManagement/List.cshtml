@@ -27,6 +27,7 @@
         <th>عنوان کالا</th>
         <th>قیمت</th>
         <th>تعداد موجودی</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -37,6 +38,10 @@
             <td>@item.Title</td>
             <td>@item.Price</td>
             <td>@item.Qty</td>
+            <td>
+                <a class="btn btn-warning btn-sm"
+                   asp-controller="ProductsManagement" asp-action="Edit" asp-route-id="@item.Id">ویرایش</a>
+            </td>
         </tr>
     }
     </tbody>

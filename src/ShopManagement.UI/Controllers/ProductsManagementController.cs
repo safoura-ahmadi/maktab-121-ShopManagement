@@ -37,18 +37,37 @@ namespace ShopManagement.UI.Controllers
             return View(products);
         }
 
+
+        #region Add-Product
         public IActionResult Add()
         {
-
             return View();
         }
+
+
         [HttpPost]
-        public IActionResult CreateProduct(string name, int price, int quantity)
+        public IActionResult Add(string name, int price, int quantity)
         {
             _productAppServices.AddProducts(name, price, quantity);
             return RedirectToAction("List");
-
         }
+        #endregion
+
+
+        #region Edit-Product
+        public IActionResult Edit()
+        {
+            // ...
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(string name, int price, int quantity)
+        {
+            // ...
+            return RedirectToAction("List");
+        }
+        #endregion
 
     }
 }
