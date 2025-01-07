@@ -22,6 +22,13 @@ namespace ShopManagement.Infrastructures.Repositories
         public Product GetProductDetails(int productId)
         {
             // todo : complete this task
+            return new Product()
+            {
+                Id = productId,
+                Qty = 0,
+                Price = 0,
+                Title = "از دیتابیس بخون"
+            };
             throw new NotImplementedException();
         }
 
