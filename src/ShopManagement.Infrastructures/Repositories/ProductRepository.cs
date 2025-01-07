@@ -18,5 +18,16 @@ namespace ShopManagement.Infrastructures.Repositories
             List<Product> products = _dbContext.Products.ToList();
             return products;
         }
+        public  void AddProducts(string name, int price, int quantity)
+        {
+            var prc = new Product()
+            {
+                Title = name,
+                Price = price,
+                Qty = quantity
+            };
+            _dbContext.Products.Add(prc);
+          _dbContext.SaveChanges();
+        }
     }
 }
