@@ -8,7 +8,10 @@ using ShopManagement.Infrastructures.Repositories;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddRazorRuntimeCompilation();
+
+
 //builder.Services.AddScoped<ShopDbContext, ShopDbContext>();
 string? connectionString = builder.Configuration.GetConnectionString("ShopDb");
 builder.Services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(connectionString));
@@ -34,7 +37,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{action=Index}/{controller=Home}/{id?}")
     .WithStaticAssets();
 
 

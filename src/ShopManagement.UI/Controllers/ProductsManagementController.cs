@@ -36,5 +36,12 @@ namespace ShopManagement.UI.Controllers
             List<Domain.Entities.Product> products = await _productAppServices.GetListOfProducts();
             return View(products);
         }
+
+        public IActionResult Add()
+        {
+
+            return View();
+        }
+
     }
 }
