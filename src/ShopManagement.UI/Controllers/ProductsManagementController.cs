@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShopManagement.AppServices.Contracts;
+using ShopManagement.Domain.Contracts;
+using ShopManagement.Domain.Entities;
 
 namespace ShopManagement.UI.Controllers
 {
@@ -55,14 +56,14 @@ namespace ShopManagement.UI.Controllers
 
 
         #region Edit-Product
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            // ...
-            return View();
+            Product model = _productAppServices.GetProductDetails(id);
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(string name, int price, int quantity)
+        public IActionResult Edit(Product model)
         {
             // ...
             return RedirectToAction("List");

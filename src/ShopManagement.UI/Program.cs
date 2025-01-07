@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.AppServices;
-using ShopManagement.AppServices.Contracts;
-using ShopManagement.Domain.Repositories;
+using ShopManagement.Domain.Contracts;
 using ShopManagement.Infrastructures.Db;
 using ShopManagement.Infrastructures.Repositories;
 

@@ -1,5 +1,5 @@
-﻿using ShopManagement.Domain.Entities;
-using ShopManagement.Domain.Repositories;
+﻿using ShopManagement.Domain.Contracts;
+using ShopManagement.Domain.Entities;
 using ShopManagement.Infrastructures.Db;
 
 namespace ShopManagement.Infrastructures.Repositories
@@ -18,16 +18,23 @@ namespace ShopManagement.Infrastructures.Repositories
             List<Product> products = _dbContext.Products.ToList();
             return products;
         }
-        public  void AddProducts(string name, int price, int quantity)
+
+        public Product GetProductDetails(int productId)
         {
-            var prc = new Product()
+            // todo : complete this task
+            throw new NotImplementedException();
+        }
+
+        public void AddProducts(string name, int price, int quantity)
+        {
+            Product prc = new()
             {
                 Title = name,
                 Price = price,
                 Qty = quantity
             };
             _dbContext.Products.Add(prc);
-          _dbContext.SaveChanges();
+            _dbContext.SaveChanges();
         }
     }
 }

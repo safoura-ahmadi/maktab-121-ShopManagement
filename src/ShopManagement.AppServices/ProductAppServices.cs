@@ -1,6 +1,5 @@
-﻿using ShopManagement.AppServices.Contracts;
+﻿using ShopManagement.Domain.Contracts;
 using ShopManagement.Domain.Entities;
-using ShopManagement.Domain.Repositories;
 
 namespace ShopManagement.AppServices
 {
@@ -18,10 +17,19 @@ namespace ShopManagement.AppServices
             List<Product> products = await _productRepository.GetProducts();
             return products;
         }
+
+        public Product GetProductDetails(int productId)
+        {
+            return _productRepository.GetProductDetails(productId);
+        }
+
+
         public void AddProducts(string name, int price, int quantity)
         {
-          _productRepository.AddProducts(name, price, quantity);
-           
+            _productRepository.AddProducts(name, price, quantity);
         }
+
+
+
     }
 }
