@@ -42,6 +42,13 @@ namespace ShopManagement.UI.Controllers
 
             return View();
         }
+        [HttpPost]
+        public IActionResult CreateProduct(string name, int price, int quantity)
+        {
+            _productAppServices.AddProducts(name, price, quantity);
+            return RedirectToAction("List");
+
+        }
 
     }
 }

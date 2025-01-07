@@ -18,5 +18,10 @@ namespace ShopManagement.AppServices
             List<Product> products = await _productRepository.GetProducts();
             return products;
         }
+        public void AddProducts(string name, int price, int quantity)
+        {
+          _productRepository.AddProducts(name, price, quantity);
+           
+        }
     }
 }
