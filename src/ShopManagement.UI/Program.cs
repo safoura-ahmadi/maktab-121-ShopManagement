@@ -3,8 +3,23 @@ using ShopManagement.AppServices;
 using ShopManagement.Domain.Contracts;
 using ShopManagement.Infrastructures.Db;
 using ShopManagement.Infrastructures.Repositories;
+using ShopManagement.MvcUI.Models;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+
+if (builder.Environment.IsProduction())
+{
+}
+
+ConfigurationManager configuration = builder.Configuration;
+
+//string universityName = configuration.GetSection("Settings:ApplicationName").Value;
+//Settings? settings = configuration.GetSection("Settings").Get<Settings>();
+
+
+builder.Services.AddSingleton(configuration.GetSection("Settings").Get<Settings>());
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews()
@@ -27,6 +42,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsEnvironment("Erfan"))
+{
+    app.UseHsts();
+}
+
 app.UseHttpsRedirection();
 app.UseRouting();
 
@@ -34,10 +55,20 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{action=Index}/{controller=Home}/{id?}")
-    .WithStaticAssets();
+if (app.Environment.IsEnvironment("Erfan"))
+{
+    app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}")
+        .WithStaticAssets();
+}
+else
+{
+    app.MapControllerRoute(
+            name: "default",
+            pattern: "{action=Index}/{controller=Home}/{id?}")
+        .WithStaticAssets();
+}
 
 
 app.Run();

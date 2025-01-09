@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Razor.Language.Intermediate
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+StateManagement
+- Cookie
+- Session
+- ViewData
+- TempData
+- ViewBag
+- Cache
+
+Identity (AAA)
+
+@{
+    string DoSomething(string p1, string p2)
+    {
+        return $"{p1} - {p2}";
+    }
+    var time = "12:00";
+
+}
+<h2>@DateTime.Now</h2>
+<h2>time</h2>
+<h2>@time</h2>
+<h2>@@time</h2>
+<h1>@@Product Management</h1>
+
+@{
+
+}
+
+@try
+{
+    throw new Exception("aasdasd");
+}
+catch (Exception ex)
+{
+    <p>The exception message: @ex.Message</p>
+}
+finally
+{
+    <p>The finally statement.</p>
+}
+
+<ul class="list-group">
+    @for (var i = 1; i < 11; i++)
+    {
+        <li class="list-group-item">
+            @if (i % 2 == 0)
+            {
+                @(i * 2)
+            }
+            else
+            {
+                @i
+            }
+        </li>
+    }
+</ul>
+<br />
+<br />
+
+<br />
+<span>@(DoSomething("erfan", "joharzade"))</span>
+<br />
+@("<span>" + DoSomething("erfan", "joharzade") + "</span>")
+<br/>
+@Html.Raw("<span>" + DoSomething("erfan", "joharzade") + "</span>")

@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Razor.Language.Intermediate
+@using ShopManagement.Domain.Contracts
+@using ShopManagement.MvcUI.Models
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model string
+
+@inject IConfiguration _configs
+@inject Settings _settings
+@* @inject IProductRepository _Repository
+@{
+    var products = _Repository.GetProducts()
+} *@
+
+<h1>@Model</h1>
+<hr/>
+<h2 class="text-bg-danger">
+    @_configs.GetSection("Settings:ApplicationName").Value;
+</h2>

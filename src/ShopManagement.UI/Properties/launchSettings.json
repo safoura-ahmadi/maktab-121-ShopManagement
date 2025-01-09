@@ -18,6 +18,32 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "https-Prod": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:5432;http://localhost:65432",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+    "https-Erfan": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:5432;http://localhost:65432",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Erfan"
+      }
+    },
+    "https-Mohammad": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:5432;http://localhost:65432",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Mohammad"
+      }
     }
   }
-}

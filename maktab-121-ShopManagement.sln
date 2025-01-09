@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.UI", "src\ShopManagement.UI\ShopManagement.UI.csproj", "{D4956D36-BCE9-4BB3-AA64-CC7316CDA154}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.MvcUI", "src\ShopManagement.UI\ShopManagement.MvcUI.csproj", "{D4956D36-BCE9-4BB3-AA64-CC7316CDA154}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9A807491-9E19-4924-9497-3FE7D3DEF080}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.AppServices", "src\ShopManagement.AppServices\ShopManagement.AppServices.csproj", "{3C3AD6D7-CE0B-4A9D-97F0-50BFD76BE139}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Services", "02-Services", "{77B6B4B9-F461-44CA-B884-8D77A98ED229}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.RazorPageUI", "src\ShopManagement.UI.RP\ShopManagement.RazorPageUI.csproj", "{C162EE98-0161-408C-A9C7-C4D783DEF113}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{3C3AD6D7-CE0B-4A9D-97F0-50BFD76BE139}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C3AD6D7-CE0B-4A9D-97F0-50BFD76BE139}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C3AD6D7-CE0B-4A9D-97F0-50BFD76BE139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C162EE98-0161-408C-A9C7-C4D783DEF113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C162EE98-0161-408C-A9C7-C4D783DEF113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C162EE98-0161-408C-A9C7-C4D783DEF113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C162EE98-0161-408C-A9C7-C4D783DEF113}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +62,6 @@ Global
 		{4E55E7C0-0915-4267-8F29-1A8CD19B217A} = {9A807491-9E19-4924-9497-3FE7D3DEF080}
 		{3C3AD6D7-CE0B-4A9D-97F0-50BFD76BE139} = {77B6B4B9-F461-44CA-B884-8D77A98ED229}
 		{77B6B4B9-F461-44CA-B884-8D77A98ED229} = {9A807491-9E19-4924-9497-3FE7D3DEF080}
+		{C162EE98-0161-408C-A9C7-C4D783DEF113} = {4E55E7C0-0915-4267-8F29-1A8CD19B217A}
 	EndGlobalSection
 EndGlobal
