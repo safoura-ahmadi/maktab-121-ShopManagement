@@ -9,12 +9,12 @@ namespace ShopManagement.MvcUI.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<HomeController> _logger;
-        private readonly Settings _settings;
+        private readonly SettingsModel _settings;
 
         public HomeController(
             IConfiguration configuration,
             ILogger<HomeController> logger,
-            Settings settings)
+            SettingsModel settings)
         {
             _configuration = configuration;
             _logger = logger;
