@@ -2,8 +2,11 @@
 {
     public class SettingsModel
     {
-        public int MaximumUnitsForTerm1 { get; set; }
+        //public int ApplicationName { get; set; }
         public string ApplicationName { get; set; }
+
+
+        public int MaximumUnitsForTerm1 { get; set; }
         //public Mobile Mobile { get; set; }
     }
 
