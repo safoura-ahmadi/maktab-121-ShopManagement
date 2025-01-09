@@ -29,7 +29,9 @@ namespace ShopManagement.AppServices
             _productRepository.AddProducts(name, price, quantity);
         }
 
-
-
+        public void EditProducts(int id, string name, int price, int quantity)
+        {
+            _productRepository.EditProducts(id, name, price, quantity);
+        }
     }
 }

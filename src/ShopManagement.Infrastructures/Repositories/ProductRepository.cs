@@ -43,5 +43,16 @@ namespace ShopManagement.Infrastructures.Repositories
             _dbContext.Products.Add(prc);
             _dbContext.SaveChanges();
         }
+
+        public void EditProducts(int id , string name, int price, int quantity)
+        {
+         
+            var p = _dbContext.Products.FirstOrDefault(x => x.Id == id);
+            p.Title = name;
+            p.Price = price;
+            p.Qty = quantity;  
+            _dbContext.SaveChanges();
+        
+    }
     }
 }
