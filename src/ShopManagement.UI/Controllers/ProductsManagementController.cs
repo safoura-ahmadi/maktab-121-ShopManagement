@@ -63,9 +63,9 @@ namespace ShopManagement.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Product model)
+        public IActionResult Edit(int id , string name, int price, int quantity)
         {
-            // ...
+            _productAppServices.EditProducts(id, name, price, quantity);
             return RedirectToAction("List");
         }
         #endregion
