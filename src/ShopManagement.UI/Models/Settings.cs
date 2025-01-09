@@ -1,6 +1,6 @@
 ﻿namespace ShopManagement.MvcUI.Models
 {
-    public class Settings
+    public class SettingsModel
     {
         public int MaximumUnitsForTerm1 { get; set; }
         public string ApplicationName { get; set; }

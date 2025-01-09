@@ -15,10 +15,10 @@ if (builder.Environment.IsProduction())
 ConfigurationManager configuration = builder.Configuration;
 
 //string universityName = configuration.GetSection("Settings:ApplicationName").Value;
-//Settings? settings = configuration.GetSection("Settings").Get<Settings>();
+//Settings? settings = configuration.GetSection("SettingsModel").Get<Settings>();
 
 
-builder.Services.AddSingleton(configuration.GetSection("Settings").Get<Settings>());
+builder.Services.AddSingleton(configuration.GetSection("Settings").Get<SettingsModel>());
 
 
 // Add services to the container.
