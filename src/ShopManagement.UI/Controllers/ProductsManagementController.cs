@@ -1,9 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopManagement.Domain.Contracts;
 using ShopManagement.Domain.Entities;
+using ShopManagement.MvcUI.Models.ProductManagement;
 
-namespace ShopManagement.UI.Controllers
+namespace ShopManagement.MvcUI.Controllers
 {
+    //public class Person
+    //{
+    //    public int Id { get; set; }
+    //    public string FirstName { get; set; }
+    //    public string LastName { get; set; }
+    //}
+
     public class ProductsManagementController : Controller
     {
         private readonly IProductAppServices _productAppServices;
@@ -11,6 +19,16 @@ namespace ShopManagement.UI.Controllers
         public ProductsManagementController(IProductAppServices productAppServices)
         {
             _productAppServices = productAppServices;
+
+            //Person p1 = new()
+            //{
+            //    Id = 1,
+            //    FirstName = "Ali",
+            //    LastName = "Ali"
+            //};
+            //string json = JsonSerializer.Serialize(p1);
+
+            //Person? p2 = JsonSerializer.Deserialize<Person>(json);
         }
 
         public async Task<IActionResult> List()
@@ -34,7 +52,7 @@ namespace ShopManagement.UI.Controllers
             //List<Domain.Entities.Product> products = await productAppServices.GetListOfProducts();
 
             // 04
-            List<Domain.Entities.Product> products = await _productAppServices.GetListOfProducts();
+            List<Product> products = await _productAppServices.GetListOfProducts();
             return View(products);
         }
 
@@ -42,15 +60,39 @@ namespace ShopManagement.UI.Controllers
         #region Add-Product
         public IActionResult Add()
         {
-            return View();
+            AddProductViewModel model = new();
+            //model.CategoryList = new List<SelectListOpt>()
+            //{
+            //    new() { Value = 1, Title = "Digital" },
+            //    new() { Value = 2, Title = "Home" },
+            //};
+
+            ViewBag.CategoryList = new List<SelectListOpt>()
+            {
+                new() { Value = 1, Title = "Digital" },
+                new() { Value = 2, Title = "Home" },
+            };
+            return View(model);
         }
 
 
         [HttpPost]
-        public IActionResult Add(string name, int price, int quantity)
+        // Model Binding
+        // Model Validating ***
+        public IActionResult Add(AddProductViewModel model)
         {
-            _productAppServices.AddProducts(name, price, quantity);
-            return RedirectToAction("List");
+            // validate model
+            if (ModelState.IsValid)
+            {
+                _productAppServices.AddProducts(model.Name, model.Price, model.Qty);
+                return RedirectToAction("List");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "چرا همه فرم رو خالی فرستادی");
+                ModelState.AddModelError(string.Empty, "فیلد ها رو درست پر کن");
+                return View(model);
+            }
         }
         #endregion
 
@@ -63,7 +105,7 @@ namespace ShopManagement.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id , string name, int price, int quantity)
+        public IActionResult Edit(int id, string name, int price, int quantity)
         {
             _productAppServices.EditProducts(id, name, price, quantity);
             return RedirectToAction("List");

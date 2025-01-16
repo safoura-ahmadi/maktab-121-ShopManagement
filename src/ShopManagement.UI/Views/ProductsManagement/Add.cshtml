@@ -1,30 +1,81 @@
-﻿<div class="container px-5 my-5">
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ShopManagement.MvcUI.Models.ProductManagement
+@model ShopManagement.MvcUI.Models.ProductManagement.AddProductViewModel
 
-    <p style="text-align:center; color:blueviolet; font-size:20px; margin-bottom:80px;">Add Product</p>
+<div class="container px-5 my-5">
+
+    <h2 class="mb-5">ثبت محصول</h2>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <form method="post" asp-controller="ProductsManagement" asp-action="Add">
-       
 
-        <!-- نام محصول -->
-        <div class="form-floating mb-3">
-            <input class="form-control" id="productName" dir="rtl" name="name" placeholder="نام محصول" type="text" required />
+        <div class="mb-3">
+            @* <input class="form-control" id="productName" dir="rtl" name="name" placeholder="نام محصول" type="text" required /> *@
+            <label class="form-label" asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" />
+            <span class="text-danger" asp-validation-for="Name"></span>
         </div>
 
-        <!-- قیمت -->
-        <div class="form-floating mb-3">
-            <input class="form-control" id="productPrice" dir="rtl" name="price" placeholder="قیمت" type="number" step="1" required />
+        <div class="mb-3">
+            <label class="form-label" asp-for="CategoryId"></label>
+            
+            @* 1 *@
+            @*<input class="form-control" asp-for="CategoryId" />
+            <span class="text-danger" asp-validation-for="CategoryId"></span> *@
+            
+            @* 2 *@
+            @*<select class="form-control" required>
+                <option>انتخاب کنید</option>
+                <option value="1">Digital</option>
+                <option value="2">Home</option>
+            </select> *@
+            
+            @* 3 *@
+            @*<select class="form-control">
+                <option>انتخاب کنید</option>
+                @foreach (var item in Model.CategoryList)
+                {
+                    <option value="@item.Value">@item.Title</option>
+                }
+            </select> *@
+            
+            <select class="form-control" asp-for="CategoryId">
+                <option value="">انتخاب کنید</option>
+                @foreach (var item in (List<SelectListOpt>)@ViewBag.CategoryList)
+                {
+                    <option value="@item.Value">@item.Title</option>
+                }
+            </select>
+            <span class="text-danger" asp-validation-for="CategoryId"></span>
+            
+
         </div>
 
-        <!-- موجودی انبار -->
-        <div class="form-floating mb-3">
-            <input class="form-control" id="productQuantity" dir="rtl" name="quantity" placeholder="موجودی انبار" type="number" required />
+        <div class="mb-3">
+            @* <input class="form-control" id="productPrice" dir="rtl" name="price" placeholder="قیمت" type="number" step="1" required /> *@
+
+            <label class="form-label" asp-for="Price"></label>
+            <input class="form-control" asp-for="Price" />
+            <span class="text-danger" asp-validation-for="Price"></span>
         </div>
 
-     
+        <div class="mb-3">
+            @* <input class="form-control" id="productQuantity" dir="rtl" name="quantity" placeholder="موجودی انبار" type="number" required /> *@
 
-        <!-- دکمه ارسال -->
-        <div class="d-grid">
-            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">ثبت</button>
+            <label class="form-label" asp-for="Qty"></label>
+            <input class="form-control" asp-for="Qty" />
+            <span class="text-danger" asp-validation-for="Qty"></span>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">ثبت</button>
         </div>
     </form>
 </div>
+
+        
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
