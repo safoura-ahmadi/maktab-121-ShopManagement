@@ -26,6 +26,7 @@ namespace ShopManagement.AppServices
 
         public void AddProducts(string name, int price, int quantity)
         {
+            // validate
             _productRepository.AddProducts(name, price, quantity);
         }
 

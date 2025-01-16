@@ -34,9 +34,10 @@
     <tbody>
     @foreach (var item in @Model)
     {
+        <input type="hidden" value="@item.Id"/>
         <tr>
             <td>@item.Id</td>
-            <td>@item.Title</td>
+                <td><span data-shenase="@item.Id">@item.Title</span></td>
             <td>@item.Price</td>
             <td>@item.Qty</td>
             <td>
