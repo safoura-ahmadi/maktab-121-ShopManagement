@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.MvcUI.Models
+﻿namespace ShopManagement.Framework
 {
     public class SettingsModel
     {

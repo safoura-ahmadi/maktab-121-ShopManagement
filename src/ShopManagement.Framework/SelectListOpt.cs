@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.MvcUI.Models.ProductManagement;
+﻿namespace ShopManagement.Framework;
 
 public class SelectListOpt
 {

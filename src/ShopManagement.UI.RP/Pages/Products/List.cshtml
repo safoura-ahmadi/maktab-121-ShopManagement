@@ -1,0 +1,41 @@
+﻿@page
+@model ShopManagement.RazorPageUI.Pages.ProductManagementModel
+@{
+}
+<div class="row">
+    <div class="col-6">
+        <h1>مدیریت محصولات</h1>
+    </div>
+    <div class="col-6">
+        <a class="btn btn-info" asp-page="/Products/AddProduct">
+            محصول جدید
+        </a>
+    </div>
+</div>
+<table class="table table-bordered table-responsive table-primary table-hover">
+    <thead>
+    <tr>
+        <th>شناسه</th>
+        <th>عنوان کالا</th>
+        <th>قیمت</th>
+        <th>تعداد موجودی</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+    {
+        <input type="hidden" value="@item.Id"/>
+        <tr>
+            <td>@item.Id</td>
+            <td><span data-shenase="@item.Id">@item.Title</span></td>
+            <td>@item.Price</td>
+            <td>@item.Qty</td>
+            <td>
+                <a class="btn btn-warning btn-sm"
+                   asp-page="/Products/EditProduct" asp-route-id="@item.Id">ویرایش</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

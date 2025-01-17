@@ -1,10 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using ShopManagement.Domain.Contracts;
 using ShopManagement.Domain.Entities;
+using ShopManagement.Framework;
 using ShopManagement.MvcUI.Models.ProductManagement;
+
+
+
 
 namespace ShopManagement.MvcUI.Controllers
 {
+
+    public abstract class MyCustomRazorPage<T> : RazorPage<T>
+    {
+
+        public string GetName(string name) => name;
+
+    }
+
+    public class MyCustomController : Controller
+    {
+        public string GetName(string name) => name + name;
+    }
+
+
     //public class Person
     //{
     //    public int Id { get; set; }
@@ -12,7 +31,7 @@ namespace ShopManagement.MvcUI.Controllers
     //    public string LastName { get; set; }
     //}
 
-    public class ProductsManagementController : Controller
+    public class ProductsManagementController : MyCustomController
     {
         private readonly IProductAppServices _productAppServices;
 
@@ -54,8 +73,14 @@ namespace ShopManagement.MvcUI.Controllers
             // 04
             List<Product> products = await _productAppServices.GetListOfProducts();
             return View(products);
+            //return GetName("");
         }
 
+
+        public string GetName()
+        {
+            return GetName("");
+        }
 
         #region Add-Product
         public IActionResult Add()
@@ -67,11 +92,16 @@ namespace ShopManagement.MvcUI.Controllers
             //    new() { Value = 2, Title = "Home" },
             //};
 
-            ViewBag.CategoryList = new List<SelectListOpt>()
-            {
-                new() { Value = 1, Title = "Digital" },
-                new() { Value = 2, Title = "Home" },
-            };
+            //ViewBag.CategoryList = new List<SelectListOpt>()
+            //{
+            //    new() { Value = 1, Title = "Digital" },
+            //    new() { Value = 2, Title = "Home" },
+            //};
+
+            //var categories = await _categoryAppService.GetAllCategories();
+
+
+            ViewBag.CategoryList = EnumUtility.GetEnumList<ProductCategoryEnum>();
             return View(model);
         }
 
