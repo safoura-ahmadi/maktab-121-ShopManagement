@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ShopManagement.UI.RP.Pages
+namespace ShopManagement.RazorPageUI.Pages
 {
     public class IndexModel : PageModel
     {
@@ -13,6 +12,11 @@ namespace ShopManagement.UI.RP.Pages
         }
 
         public void OnGet()
+        {
+
+        }
+
+        public void OnPost()
         {
 
         }

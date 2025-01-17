@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ShopManagement.MvcUI.Models;
+using ShopManagement.Framework;
 using ShopManagement.UI.Models;
 using System.Diagnostics;
 

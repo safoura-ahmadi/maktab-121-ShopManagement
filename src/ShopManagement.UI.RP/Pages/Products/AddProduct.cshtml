@@ -1,0 +1,60 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ShopManagement.Framework
+@model ShopManagement.RazorPageUI.Pages.Products.AddProductModel
+@{
+}
+
+
+<div class="container px-5 my-5">
+
+    <h2 class="mb-5">محصول جدید</h2>
+    
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <form method="post">
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Product.Name"></label>
+            <input class="form-control" asp-for="Product.Name" />
+            <span class="text-danger" asp-validation-for="Product.Name"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Product.CategoryId"></label>
+
+            <select class="form-control" asp-for="Product.CategoryId">
+                <option value="">انتخاب کنید</option>
+                @foreach (var item in Model.CategoryList)
+                {
+                    <option value="@item.Value">@item.Title</option>
+                }
+            </select>
+            <span class="text-danger" asp-validation-for="Product.CategoryId"></span>
+
+
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Product.Price"></label>
+            <input class="form-control" asp-for="Product.Price" />
+            <span class="text-danger" asp-validation-for="Product.Price"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Product.Qty"></label>
+            <input class="form-control" asp-for="Product.Qty" />
+            <span class="text-danger" asp-validation-for="Product.Qty"></span>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">ثبت</button>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

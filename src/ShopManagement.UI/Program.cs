@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.AppServices;
 using ShopManagement.Domain.Contracts;
+using ShopManagement.Framework;
 using ShopManagement.Infrastructures.Db;
 using ShopManagement.Infrastructures.Repositories;
-using ShopManagement.MvcUI.Models;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

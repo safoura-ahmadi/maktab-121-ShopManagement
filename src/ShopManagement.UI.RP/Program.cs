@@ -1,9 +1,38 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using ShopManagement.AppServices;
+using ShopManagement.Domain.Contracts;
+using ShopManagement.Framework;
+using ShopManagement.Infrastructures.Db;
+using ShopManagement.Infrastructures.Repositories;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+
+if (builder.Environment.IsProduction())
+{
+}
+
+ConfigurationManager configuration = builder.Configuration;
+
+//string universityName = configuration.GetSection("Settings:ApplicationName").Value;
+//Settings? settings = configuration.GetSection("SettingsModel").Get<Settings>();
+
+
+builder.Services.AddSingleton(configuration.GetSection("Settings").Get<SettingsModel>());
+
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
 
-var app = builder.Build();
+
+//builder.Services.AddScoped<ShopDbContext, ShopDbContext>();
+string? connectionString = builder.Configuration.GetConnectionString("ShopDb");
+builder.Services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductAppServices, ProductAppServices>();
+
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -13,8 +42,13 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// Configure the HTTP request pipeline.
+if (app.Environment.IsEnvironment("Erfan"))
+{
+    app.UseHsts();
+}
 
+app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();

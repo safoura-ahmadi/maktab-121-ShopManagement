@@ -1,33 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="appsettings-zxz.ini" />
-    <Content Include="appsettings-xzczxc.xml" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="appsettings-zxz.ini" />
+		<Content Include="appsettings-xzczxc.xml" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ShopManagement.AppServices\ShopManagement.AppServices.csproj" />
-    <ProjectReference Include="..\ShopManagement.Domain\ShopManagement.Domain.csproj" />
-    <ProjectReference Include="..\ShopManagement.Framework\ShopManagement.Framework.csproj" />
-    <ProjectReference Include="..\ShopManagement.Infrastructures\ShopManagement.Infrastructures.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ShopManagement.AppServices\ShopManagement.AppServices.csproj" />
+		<ProjectReference Include="..\ShopManagement.Domain\ShopManagement.Domain.csproj" />
+		<ProjectReference Include="..\ShopManagement.Framework\ShopManagement.Framework.csproj" />
+		<ProjectReference Include="..\ShopManagement.Infrastructures\ShopManagement.Infrastructures.csproj" />
+	</ItemGroup>
 
 </Project>

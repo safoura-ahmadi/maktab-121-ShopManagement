@@ -73,8 +73,14 @@ namespace ShopManagement.MvcUI.Controllers
             // 04
             List<Product> products = await _productAppServices.GetListOfProducts();
             return View(products);
+            //return GetName("");
         }
 
+
+        public string GetName()
+        {
+            return GetName("");
+        }
 
         #region Add-Product
         public IActionResult Add()
