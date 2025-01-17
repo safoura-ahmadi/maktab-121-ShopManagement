@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-Framework", "00-Framewor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Framework", "src\ShopManagement.Framework\ShopManagement.Framework.csproj", "{9E70D8ED-409F-4C17-B9F6-6E6D9537D1D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Api", "src\ShopManagement.Api\ShopManagement.Api.csproj", "{4BE5F17A-4F87-47D3-A60C-50E1347BD7FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{9E70D8ED-409F-4C17-B9F6-6E6D9537D1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E70D8ED-409F-4C17-B9F6-6E6D9537D1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E70D8ED-409F-4C17-B9F6-6E6D9537D1D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE5F17A-4F87-47D3-A60C-50E1347BD7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE5F17A-4F87-47D3-A60C-50E1347BD7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE5F17A-4F87-47D3-A60C-50E1347BD7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE5F17A-4F87-47D3-A60C-50E1347BD7FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{C162EE98-0161-408C-A9C7-C4D783DEF113} = {4E55E7C0-0915-4267-8F29-1A8CD19B217A}
 		{33D7FC77-517D-4357-A855-DCB2AC9762C8} = {9A807491-9E19-4924-9497-3FE7D3DEF080}
 		{9E70D8ED-409F-4C17-B9F6-6E6D9537D1D2} = {33D7FC77-517D-4357-A855-DCB2AC9762C8}
+		{4BE5F17A-4F87-47D3-A60C-50E1347BD7FE} = {4E55E7C0-0915-4267-8F29-1A8CD19B217A}
 	EndGlobalSection
 EndGlobal

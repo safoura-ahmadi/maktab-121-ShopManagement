@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 using ShopManagement.AppServices;
 using ShopManagement.Domain.Contracts;
 using ShopManagement.Framework;
@@ -11,19 +12,16 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 if (builder.Environment.IsProduction())
 {
 }
-
 ConfigurationManager configuration = builder.Configuration;
-
-//string universityName = configuration.GetSection("Settings:ApplicationName").Value;
-//Settings? settings = configuration.GetSection("SettingsModel").Get<Settings>();
 
 
 builder.Services.AddSingleton(configuration.GetSection("Settings").Get<SettingsModel>());
 
 
 // Add services to the container.
-builder.Services.AddControllersWithViews()
-    .AddRazorRuntimeCompilation();
+builder.Services.AddControllers();
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
 
 
 //builder.Services.AddScoped<ShopDbContext, ShopDbContext>();
@@ -35,40 +33,16 @@ builder.Services.AddScoped<IProductAppServices, ProductAppServices>();
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsEnvironment("Erfan"))
-{
-    app.UseHsts();
+    app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
-app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
-//if (app.Environment.IsEnvironment("Erfan"))
-//{
-//    app.MapControllerRoute(
-//            name: "default",
-//            pattern: "{controller=Home}/{action=Index}/{id?}")
-//        .WithStaticAssets();
-//}
-//else
-//{
-app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-//}
-
+app.MapControllers();
 
 app.Run();

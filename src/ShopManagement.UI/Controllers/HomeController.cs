@@ -50,5 +50,46 @@ namespace ShopManagement.MvcUI.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        public IActionResult A1()
+        {
+            return View("CommonView");
+        }
+
+        public IActionResult A2()
+        {
+            return View("CommonView");
+        }
+
+        public IActionResult A3()
+        {
+            return View("CommonView");
+        }
+
+        public IActionResult A4()
+        {
+            return View("CommonView");
+        }
+
+        public IActionResult A5()
+        {
+            return View("CommonView");
+        }
+
+        public IActionResult FindView(int vNumber)
+        {
+            switch (vNumber)
+            {
+                case 1: return View("v1");
+                case 2: return View("v2");
+                case 3: return View("v3");
+            }
+
+            return View("CommonView");
+        }
+
+
+
     }
 }
