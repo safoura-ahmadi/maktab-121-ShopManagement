@@ -55,20 +55,20 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
-if (app.Environment.IsEnvironment("Erfan"))
-{
-    app.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}")
-        .WithStaticAssets();
-}
-else
-{
-    app.MapControllerRoute(
-            name: "default",
-            pattern: "{action=Index}/{controller=Home}/{id?}")
-        .WithStaticAssets();
-}
+//if (app.Environment.IsEnvironment("Erfan"))
+//{
+//    app.MapControllerRoute(
+//            name: "default",
+//            pattern: "{controller=Home}/{action=Index}/{id?}")
+//        .WithStaticAssets();
+//}
+//else
+//{
+app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
+//}
 
 
 app.Run();
