@@ -23,7 +23,10 @@ namespace ShopManagement.MvcUI.Models.ProductManagement
 
     public enum ProductCategoryEnum
     {
+        [Display(Name = "دیجیتال")]
         Digital = 1,
+
+        [Display(Name = "خانه")]
         Home = 2,
     }
 }
