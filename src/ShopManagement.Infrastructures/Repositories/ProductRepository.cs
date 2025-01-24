@@ -21,18 +21,11 @@ namespace ShopManagement.Infrastructures.Repositories
 
         public Product GetProductDetails(int productId)
         {
-            // todo : complete this task
-            return new Product()
-            {
-                Id = productId,
-                Qty = 0,
-                Price = 0,
-                Title = "از دیتابیس بخون"
-            };
-            throw new NotImplementedException();
+            var result = _dbContext.Products.Where(w => w.Id == productId).FirstOrDefault();
+            return result;
         }
 
-        public void AddProducts(string name, int price, int quantity)
+        public int AddProducts(string name, int price, int quantity)
         {
             Product prc = new()
             {
@@ -42,6 +35,7 @@ namespace ShopManagement.Infrastructures.Repositories
             };
             _dbContext.Products.Add(prc);
             _dbContext.SaveChanges();
+            return prc.Id;
         }
 
         public void EditProducts(int id , string name, int price, int quantity)

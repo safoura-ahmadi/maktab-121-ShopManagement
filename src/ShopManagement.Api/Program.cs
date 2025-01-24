@@ -20,6 +20,8 @@ builder.Services.AddSingleton(configuration.GetSection("Settings").Get<SettingsM
 
 // Add services to the container.
 builder.Services.AddControllers();
+//builder.Services.AddControllersWithViews();
+//builder.Services.AddRazorPages();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
