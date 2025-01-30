@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ShopManagement.MvcUI.Models.ProductManagement
 {
@@ -19,6 +20,13 @@ namespace ShopManagement.MvcUI.Models.ProductManagement
         public int Qty { get; set; }
 
         //public List<SelectListOpt> CategoryList { get; set; }
+
+
+        //[Remote(action: "CheckDuplicationEmail", controller: "Users")]
+        //public string Email { get; set; }
+
+
+        //public int NationalCode { get; set; } = 57123564;
     }
 
     public enum ProductCategoryEnum

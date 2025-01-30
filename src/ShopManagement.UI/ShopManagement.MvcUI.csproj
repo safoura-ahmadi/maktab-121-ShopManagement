@@ -7,7 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="appsettings-zxz.ini" />
 		<Content Include="appsettings-xzczxc.xml" />
 	</ItemGroup>
 
