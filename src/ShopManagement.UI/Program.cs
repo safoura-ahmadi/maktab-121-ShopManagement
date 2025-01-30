@@ -8,6 +8,7 @@ using ShopManagement.Infrastructures.Repositories;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 
+
 if (builder.Environment.IsProduction())
 {
 }

@@ -50,6 +50,26 @@ namespace ShopManagement.MvcUI.Controllers
             //Person? p2 = JsonSerializer.Deserialize<Person>(json);
         }
 
+        [HttpPost]
+        // Model Binding
+        // Model Validating ***
+        public bool ApiAdd(AddProductViewModel model)
+        {
+            // validate model
+            if (ModelState.IsValid)
+            {
+                _productAppServices.AddProducts(model.Name, model.Price, model.Qty);
+                return true;
+            }
+            return false;
+            //else
+            //{
+            //    ModelState.AddModelError(string.Empty, "چرا همه فرم رو خالی فرستادی");
+            //    ModelState.AddModelError(string.Empty, "فیلد ها رو درست پر کن");
+            //    return View(model);
+            //}
+        }
+
         public async Task<IActionResult> List()
         {
             // 01
@@ -99,8 +119,7 @@ namespace ShopManagement.MvcUI.Controllers
             //};
 
             //var categories = await _categoryAppService.GetAllCategories();
-
-
+            
             ViewBag.CategoryList = EnumUtility.GetEnumList<ProductCategoryEnum>();
             return View(model);
         }
@@ -130,6 +149,10 @@ namespace ShopManagement.MvcUI.Controllers
         #region Edit-Product
         public IActionResult Edit(int id)
         {
+
+            if (id < 0)
+                return NotFound();
+
             Product model = _productAppServices.GetProductDetails(id);
             return View(model);
         }
