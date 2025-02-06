@@ -35,7 +35,7 @@ namespace ShopManagement.RazorPageUI.Pages.Products
             // validate model
             if (ModelState.IsValid)
             {
-                _productAppServices.AddProducts(Product.Name, Product.Price, Product.Qty);
+                _productAppServices.AddProducts(Product.Name, Product.Price, Product.Qty, 0);
                 return RedirectToPage("/Products/List");
             }
             else

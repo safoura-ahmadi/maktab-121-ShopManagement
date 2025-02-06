@@ -21,10 +21,8 @@ builder.Services.AddDefaultIdentity<AppUser>(options =>
     options.User.RequireUniqueEmail = true;
     //options.User.AllowedUserNameCharacters = "adsfasdfasdfasdfasdf";
     //options.Password.
-    
-
-}
-)
+ 
+})
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 

@@ -57,7 +57,7 @@ namespace ShopManagement.Api.Controllers
         [HttpPost("add-product")]
         public int Add(Product model)
         {
-            var id = _productAppServices.AddProducts(model.Title, model.Price, model.Qty);
+            var id = _productAppServices.AddProducts(model.Title, model.Price, model.Qty, 0);
             return id;
         }
 
@@ -65,7 +65,7 @@ namespace ShopManagement.Api.Controllers
         // ModelState Validated
         public void Edit(Product model)
         {
-            _productAppServices.EditProducts(model.Id, model.Title, model.Price, model.Qty);            
+            _productAppServices.EditProducts(model.Id, model.Title, model.Price, model.Qty, 0);            
         }
 
     }

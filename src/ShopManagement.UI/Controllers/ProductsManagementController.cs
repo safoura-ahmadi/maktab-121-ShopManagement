@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using ShopManagement.Domain.Contracts;
 using ShopManagement.Domain.Entities;
 using ShopManagement.Framework;
 using ShopManagement.MvcUI.Models.ProductManagement;
+using ShopManagement.MvcUI.WebFramework;
 
 
 
@@ -31,6 +33,7 @@ namespace ShopManagement.MvcUI.Controllers
     //    public string LastName { get; set; }
     //}
 
+    [Authorize]
     public class ProductsManagementController : MyCustomController
     {
         private readonly IProductAppServices _productAppServices;
@@ -55,10 +58,11 @@ namespace ShopManagement.MvcUI.Controllers
         // Model Validating ***
         public bool ApiAdd(AddProductViewModel model)
         {
+            var userId = User.GetUserId();
             // validate model
             if (ModelState.IsValid)
             {
-                _productAppServices.AddProducts(model.Name, model.Price, model.Qty);
+                _productAppServices.AddProducts(model.Name, model.Price, model.Qty, userId);
                 return true;
             }
             return false;
@@ -130,10 +134,11 @@ namespace ShopManagement.MvcUI.Controllers
         // Model Validating ***
         public IActionResult Add(AddProductViewModel model)
         {
+            var userId = User.GetUserId();
             // validate model
             if (ModelState.IsValid)
             {
-                _productAppServices.AddProducts(model.Name, model.Price, model.Qty);
+                _productAppServices.AddProducts(model.Name, model.Price, model.Qty, userId);
                 return RedirectToAction("List");
             }
             else
@@ -160,7 +165,8 @@ namespace ShopManagement.MvcUI.Controllers
         [HttpPost]
         public IActionResult Edit(int id, string name, int price, int quantity)
         {
-            _productAppServices.EditProducts(id, name, price, quantity);
+            var userId = User.GetUserId();
+            _productAppServices.EditProducts(id, name, price, quantity, userId);
             return RedirectToAction("List");
         }
         #endregion
