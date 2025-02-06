@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShopManagement.Mvc.IdentityUI.Models;
 using System.Diagnostics;

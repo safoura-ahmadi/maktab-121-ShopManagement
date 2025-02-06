@@ -24,15 +24,15 @@ namespace ShopManagement.AppServices
         }
 
 
-        public int AddProducts(string name, int price, int quantity)
+        public int AddProducts(string name, int price, int quantity, int userId)
         {
             // validate
-           return _productRepository.AddProducts(name, price, quantity);
+           return _productRepository.AddProducts(name, price, quantity, userId);
         }
 
-        public void EditProducts(int id, string name, int price, int quantity)
+        public void EditProducts(int id, string name, int price, int quantity, int userId)
         {
-            _productRepository.EditProducts(id, name, price, quantity);
+            _productRepository.EditProducts(id, name, price, quantity, userId);
         }
     }
 }

@@ -16,5 +16,17 @@ namespace ShopManagement.Domain.Entities
 
         [Range(1, 100, ErrorMessage = "تعداد باید بین 1 تا 100 باشد")]
         public int Qty { get; set; }
+
+
+         /* Audit Fileds */
+        public int CreatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        public int? LastModifiedBy { get; set; }
+        public DateTime? LastModifiedAt { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
+        public int? DeletedBy { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace ShopManagement.Infrastructures.Repositories
 
         public async Task<List<Product>> GetProducts()
         {
-            List<Product> products = _dbContext.Products.ToList();
+            List<Product> products = _dbContext.Products.Where(w => w.IsDeleted == false).ToList();
             return products;
         }
 
@@ -25,28 +25,32 @@ namespace ShopManagement.Infrastructures.Repositories
             return result;
         }
 
-        public int AddProducts(string name, int price, int quantity)
+        public int AddProducts(string name, int price, int quantity, int userId)
         {
             Product prc = new()
             {
                 Title = name,
                 Price = price,
-                Qty = quantity
+                Qty = quantity,
+                CreatedAt = DateTime.Now,
+                CreatedBy = userId,
+                IsDeleted = false,
             };
             _dbContext.Products.Add(prc);
             _dbContext.SaveChanges();
             return prc.Id;
         }
 
-        public void EditProducts(int id , string name, int price, int quantity)
+        public int EditProducts(int id, string name, int price, int quantity, int userId)
         {
-         
             var p = _dbContext.Products.FirstOrDefault(x => x.Id == id);
             p.Title = name;
             p.Price = price;
-            p.Qty = quantity;  
+            p.Qty = quantity;
+            p.LastModifiedBy = userId;
+            p.LastModifiedAt = DateTime.Now;
             _dbContext.SaveChanges();
-        
-    }
+            return p.Id;
+        }
     }
 }

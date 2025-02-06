@@ -4,6 +4,8 @@ using ShopManagement.Domain.Contracts;
 using ShopManagement.Framework;
 using ShopManagement.Infrastructures.Db;
 using ShopManagement.Infrastructures.Repositories;
+using Microsoft.AspNetCore.Identity;
+using ShopManagement.Domain.Entities;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -26,12 +28,46 @@ builder.Services.AddSingleton(configuration.GetSection("Settings").Get<SettingsM
 builder.Services.AddControllersWithViews()
     .AddRazorRuntimeCompilation();
 
+builder.Services.AddRazorPages();
+
 
 //builder.Services.AddScoped<ShopDbContext, ShopDbContext>();
 string? connectionString = builder.Configuration.GetConnectionString("ShopDb");
 builder.Services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ShopDbContext>();
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductAppServices, ProductAppServices>();
+
+// https://go.microsoft.com/fwlink/?LinkID=532715
+//builder.Services.AddAuthentication()
+//   .AddGoogle(options =>
+//   {
+//       IConfigurationSection googleAuthNSection =
+//       config.GetSection("Authentication:Google");
+//       options.ClientId = googleAuthNSection["ClientId"];
+//       options.ClientSecret = googleAuthNSection["ClientSecret"];
+//   })
+//   .AddFacebook(options =>
+//   {
+//       IConfigurationSection FBAuthNSection =
+//       config.GetSection("Authentication:FB");
+//       options.ClientId = FBAuthNSection["ClientId"];
+//       options.ClientSecret = FBAuthNSection["ClientSecret"];
+//   })
+//   .AddMicrosoftAccount(microsoftOptions =>
+//   {
+//       microsoftOptions.ClientId = config["Authentication:Microsoft:ClientId"];
+//       microsoftOptions.ClientSecret = config["Authentication:Microsoft:ClientSecret"];
+//   })
+//   .AddTwitter(twitterOptions =>
+//   {
+//       twitterOptions.ConsumerKey = config["Authentication:Twitter:ConsumerAPIKey"];
+//       twitterOptions.ConsumerSecret = config["Authentication:Twitter:ConsumerSecret"];
+//       twitterOptions.RetrieveUserDetails = true;
+//   });
 
 WebApplication app = builder.Build();
 
@@ -71,5 +107,6 @@ app.MapControllerRoute(
     .WithStaticAssets();
 //}
 
+app.MapRazorPages();
 
 app.Run();

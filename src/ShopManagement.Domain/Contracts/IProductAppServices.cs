@@ -13,6 +13,6 @@ public interface IProductAppServices
     /// <param name="price"></param>
     /// <param name="quantity"></param>
     /// <returns>ProductId</returns>
-    public int AddProducts(string name, int price, int quantity);
-    public void EditProducts(int id ,string name, int price, int quantity);
+    public int AddProducts(string name, int price, int quantity, int userId);
+    public void EditProducts(int id ,string name, int price, int quantity, int userId);
 }
