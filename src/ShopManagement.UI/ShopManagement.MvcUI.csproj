@@ -33,4 +33,14 @@
 		<ProjectReference Include="..\ShopManagement.Infrastructures\ShopManagement.Infrastructures.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Areas\Admin\Controllers\" />
+	  <Folder Include="Areas\Admin\Data\" />
+	  <Folder Include="Areas\Admin\Models\" />
+	  <Folder Include="Areas\Admin\Views\" />
+	  <Folder Include="Areas\Supplier\Models\" />
+	  <Folder Include="Areas\Supplier\Pages\" />
+	  <Folder Include="Areas\Supplier\Views\" />
+	</ItemGroup>
+
 </Project>
