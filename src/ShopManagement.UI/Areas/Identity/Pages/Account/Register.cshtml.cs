@@ -25,6 +25,7 @@ namespace ShopManagement.MvcUI.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole<int>> _roleManager;
         private readonly IUserStore<AppUser> _userStore;
         private readonly IUserEmailStore<AppUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -34,6 +35,7 @@ namespace ShopManagement.MvcUI.Areas.Identity.Pages.Account
             UserManager<AppUser> userManager,
             IUserStore<AppUser> userStore,
             SignInManager<AppUser> signInManager,
+            RoleManager<IdentityRole<int>> roleManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -41,6 +43,7 @@ namespace ShopManagement.MvcUI.Areas.Identity.Pages.Account
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _logger = logger;
             _emailSender = emailSender;
         }
@@ -120,7 +123,23 @@ namespace ShopManagement.MvcUI.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    
+                    
+                    // ************
+                    if(_roleManager.Roles.Where(w=>w.Name=="Supplier").Any())
+                        await _userManager.AddToRoleAsync(user, "Supplier");
+                    else
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole<int>
+                        {
+                            Name="Supplier"
+                        });
+                        await _userManager.AddToRoleAsync(user, "Supplier");
+                    }
+
+
+
+                        _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

@@ -89,7 +89,17 @@ namespace ShopManagement.MvcUI.Controllers
             return View("CommonView");
         }
 
+        public bool IdentitySeedData()
+        {
+            // Create Role Admin
+            // Create Role Supplier
+            // Create Role Customer
 
+            // Create Admin user And add to Admin Role
+
+
+            return true;
+        }
 
     }
 }
