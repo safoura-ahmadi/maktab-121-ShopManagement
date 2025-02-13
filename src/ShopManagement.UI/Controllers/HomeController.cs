@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShopManagement.Framework;
 using ShopManagement.UI.Models;
 using System.Diagnostics;
@@ -23,6 +23,14 @@ namespace ShopManagement.MvcUI.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("About page visited at {Time} by User {UserId}", DateTime.UtcNow.ToLongTimeString(), 5);
+            //_logger.LogInformation("About page visited at " + DateTime.UtcNow.ToLongTimeString());
+            //_logger.Log(LogLevel.Trace, "کاربر خریدش رو تکمیل کرد");
+            //_logger.Log(LogLevel.Debug, "کاربر خریدش رو تکمیل کرد");
+            //_logger.Log(LogLevel.Information, "کاربر خریدش رو تکمیل کرد");
+            //_logger.Log(LogLevel.Warning, "کاربر خریدش رو تکمیل کرد");
+            //_logger.Log(LogLevel.Error, "کاربر خریدش رو تکمیل کرد");
+            //_logger.Log(LogLevel.Critical, "کاربر خریدش رو تکمیل کرد");
             return View();
         }
         public IActionResult Env()
